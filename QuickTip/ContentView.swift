@@ -16,21 +16,33 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("QuickTip")
+        VStack(alignment: .leading, spacing: 24) {
+            Text("💸 QuickTip")
                 .font(.largeTitle)
                 .bold()
+                .foregroundColor(.accentColor)
 
-            TextField("Enter bill amount", text: $billAmount)
-                .keyboardType(.decimalPad)
-                .textFieldStyle(.roundedBorder)
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Bill Amount")
+                    .font(.headline)
+                TextField("e.g. 75.50", text: $billAmount)
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
 
-            TextField("Enter tip %", text: $tipPercentage)
-                .keyboardType(.decimalPad)
-                .textFieldStyle(.roundedBorder)
+                Text("Tip Percentage")
+                    .font(.headline)
+                TextField("e.g. 15", text: $tipPercentage)
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+            }
 
-            Text("Tip: $\(calculatedTip, specifier: "%.2f")")
-            Text("Total: $\(totalAmount, specifier: "%.2f")")
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Tip: $\(calculatedTip, specifier: "%.2f")")
+                    .font(.title3)
+                Text("Total: $\(totalAmount, specifier: "%.2f")")
+                    .font(.title2)
+                    .bold()
+            }
 
             Spacer()
         }
